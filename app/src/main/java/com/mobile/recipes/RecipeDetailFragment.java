@@ -34,11 +34,19 @@ public class RecipeDetailFragment extends Fragment {
         super.onStart();
         View view = getView();
         if (view != null) {
-            TextView title = (TextView) view.findViewById(R.id.recipeTitle);
             Recipe recipe = Recipe.recipes[(int) recipeID];
+
+            TextView title = (TextView) view.findViewById(R.id.recipeTitle);
             title.setText(recipe.getName());
-            TextView description = (TextView) view.findViewById(R.id.recipeDescription);
-            description.setText(recipe.getRecipe());
+
+            TextView count = (TextView) view.findViewById(R.id.recipeCount);
+            count.setText(recipe.getCount());
+
+            TextView ingredients = (TextView) view.findViewById(R.id.recipeIngredients);
+            ingredients.setText(recipe.getIngredients());
+
+            TextView preparation = (TextView) view.findViewById(R.id.recipePreparation);
+            preparation.setText(recipe.getPreparation());
         }
     }
 

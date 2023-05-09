@@ -3,14 +3,37 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical">
-<TextView
-android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:id="@+id/recipeTitle"/>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/recipeTitle"/>
 
-<TextView
-android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:id="@+id/recipeDescription"/>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/recipeCount"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/ingredients"/>
+
+    <TextView
+    android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/recipeIngredients"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/preparation"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/recipePreparation"/>
     </LinearLayout>
