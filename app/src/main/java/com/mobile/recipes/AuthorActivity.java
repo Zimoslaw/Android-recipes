@@ -6,18 +6,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 
-public class DetailActivity extends AppCompatActivity {
-
-    public static final String EXTRA_RECIPE_ID = "id";
+public class AuthorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-        RecipeDetailFragment fragment = (RecipeDetailFragment)
-                getSupportFragmentManager().findFragmentById(R.id.detail_fragment);
-        int coctailId = (int) getIntent().getExtras().get(EXTRA_RECIPE_ID);
-        fragment.setRecipeID(coctailId);
+        setContentView(R.layout.activity_author);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();

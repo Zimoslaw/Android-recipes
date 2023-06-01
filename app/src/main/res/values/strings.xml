@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Recipes</string>
 
+    <string name="author_activity_title">O autorze</string>
+
     <string name="detail_button"> Pokaż przepis </string>
     <string name="recipe_name"> Nazwa potrawy </string>
     <string name="ingredients">Składniki:</string>
@@ -9,4 +11,6 @@
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="reset">Reset</string>
+
+    <string name="author_content">Recipes 2023\nJakub Niewiarowski\njakub.niewiarowski@student.put.poznan.pl</string>
 </resources>
