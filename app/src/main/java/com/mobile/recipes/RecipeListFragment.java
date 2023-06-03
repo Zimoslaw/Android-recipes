@@ -22,9 +22,9 @@ public class RecipeListFragment extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        String[] names = new String[Recipe.recipes.length];
+        String[] names = new String[Recipe.recipesDinner.length];
         for (int i = 0; i < names.length; i++) {
-            names[i] = Recipe.recipes[i].getName();
+            names[i] = Recipe.recipesDinner[i].getName();
         }
         ArrayAdapter<String> adapter = new ArrayAdapter <> (
                 inflater.getContext(), android.R.layout.simple_list_item_1, names);

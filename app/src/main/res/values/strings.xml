@@ -13,4 +13,16 @@
     <string name="reset">Reset</string>
 
     <string name="author_content">Recipes 2023\nJakub Niewiarowski\njakub.niewiarowski@student.put.poznan.pl</string>
+
+    <string name="action_share">Share</string>
+
+    <string name="title_top">Witaj,\nprzewiń w prawo, aby zobaczyć przepisy!</string>
+    <string name="top_text">Aplikacje Recipes stworzona na zaliczenie przedmiotu Aplikacje Mobilne.\n
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed lorem eu sem luctus condimentum. Vestibulum auctor lobortis est, sed laoreet velit placerat at. Mauris magna leo, sollicitudin ac diam nec, finibus euismod quam. Ut dictum augue sed pharetra vulputate. Quisque tempor vulputate convallis. Etiam non turpis leo. Suspendisse potenti. Mauris vitae dui et quam eleifend blandit. Vivamus tempor mattis erat ac consectetur. Praesent sapien enim, ultrices ac neque et, volutpat fermentum lectus. Nulla porttitor enim blandit, convallis enim quis, hendrerit ex. Quisque vel massa nulla. Proin imperdiet finibus nisi porttitor pulvinar.\n
+        Etiam sed eros lectus. Morbi dictum nunc velit, ac elementum ante bibendum nec. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent molestie vehicula consectetur. Cras justo ligula, mattis nec magna in, sollicitudin lobortis nisl. Proin non eros in ipsum interdum dignissim id vitae nulla. Mauris et vestibulum diam. Ut vitae lectus in velit congue hendrerit sit amet in massa. Cras elit leo, commodo sed risus vel, tempus mattis sapien. Vestibulum lacus nulla, sollicitudin sed hendrerit ullamcorper, ultricies sed orci. Sed quam massa, posuere in sapien ac, tincidunt consectetur lectus.
+    </string>
+
+    <string name="home_tab">Start</string>
+    <string name="category1_tab">Obiadowe</string>
+    <string name="category2_tab">Desery</string>
 </resources>

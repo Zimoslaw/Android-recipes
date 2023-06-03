@@ -12,9 +12,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class RecipeDetailFragment extends Fragment {
     private long recipeID;
+    private String recipeCategory;
 
-    public void setRecipeID(long id) {
+    public void setRecipeID(long id, String category) {
         this.recipeID = id;
+        this.recipeCategory = category;
     }
 
     @Override
@@ -43,7 +45,7 @@ public class RecipeDetailFragment extends Fragment {
         super.onStart();
         View view = getView();
         if (view != null) {
-            Recipe recipe = Recipe.recipes[(int) recipeID];
+            Recipe recipe = recipeCategory.equals("dinner") ? Recipe.recipesDinner[(int) recipeID] : recipeCategory.equals("dessert") ? Recipe.recipesDessert[(int) recipeID] : Recipe.recipesDinner[(int) recipeID];
 
             TextView title = (TextView) view.findViewById(R.id.recipeTitle);
             title.setText(recipe.getName());
