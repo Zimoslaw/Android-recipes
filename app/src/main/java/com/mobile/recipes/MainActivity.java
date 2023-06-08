@@ -67,24 +67,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public void itemClicked(long id) {
-//        View fragmentContainer = findViewById(R.id.fragment_container);
-//        if (fragmentContainer != null) {
-//            RecipeDetailFragment details = new RecipeDetailFragment();
-//            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//            details.setRecipeID(id, "dinner");
-//            ft.replace(R.id.fragment_container, details);
-//            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-//            ft.addToBackStack(null);
-//            ft.commit();
-//        } else {
-//            Intent intent = new Intent(this, DetailActivity.class);
-//            intent.putExtra(DetailActivity.EXTRA_RECIPE_ID, (int) id);
-//            startActivity(intent);
-//        }
-//    }
-
     private class SectionsPagerAdapter extends FragmentStateAdapter {
         public SectionsPagerAdapter(FragmentActivity fragmentActivity) {
             super(fragmentActivity);
