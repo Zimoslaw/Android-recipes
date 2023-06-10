@@ -25,36 +25,32 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Stan i układ
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Adapter kategorii przepisów
         SectionsPagerAdapter pagerAdapter =
                 new SectionsPagerAdapter(this);
+        // Pager kategorii przepisów
         ViewPager2 pager = (ViewPager2) findViewById(R.id.pager);
         pager.setAdapter(pagerAdapter);
+        // Menu zakładek
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         new TabLayoutMediator(tabLayout, pager,
                 (tab, position) -> tab.setText(pagerAdapter.getPageTitle(position))
         ).attach();
+        // Pasek narzędzi
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
 
-    @Override
+    // Ustawienie układu paska narzędzi
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        MenuItem menuItem = menu.findItem(R.id.action_share);
-        shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
-        setShareActionIntent("lorem ipsum");
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void setShareActionIntent(String text) {
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, text);
-        shareActionProvider.setShareIntent(intent);
-    }
-
+    // Obsługa kliknięcia w link do strony "o autorze"
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.author_action) {
@@ -67,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Adapter kategorii przepisów
     private class SectionsPagerAdapter extends FragmentStateAdapter {
         public SectionsPagerAdapter(FragmentActivity fragmentActivity) {
             super(fragmentActivity);
@@ -75,21 +72,23 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getItemCount() {
             return 3;
-        }
+        } // 2 kategorie + strona startowa
 
+        // Fragmenty stron
         @Override
         public Fragment createFragment(int position) {
             switch (position) {
                 case 0:
-                    return new TopFragment();
+                    return new TopFragment(); // Strona startowa
                 case 1:
-                    return new Tab1Fragment();
+                    return new Tab1Fragment(); // Przepisy na obiad
                 case 2:
-                    return new Tab2Fragment();
+                    return new Tab2Fragment(); // Przepisy na deser
             }
             return null;
         }
 
+        // Tytuły stron
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:

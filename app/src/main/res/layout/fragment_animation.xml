@@ -7,14 +7,14 @@
         android:id="@+id/sky"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:background="@color/black">
+
         <ImageView
             android:id="@+id/icon"
             android:layout_width="500dp"
             android:layout_height="500dp"
             android:layout_gravity="center"
-            android:transformPivotX="250dp"
-            android:transformPivotY="250dp"
             android:src="@drawable/ic_launcher_foreground" />
     </FrameLayout>
 </LinearLayout>

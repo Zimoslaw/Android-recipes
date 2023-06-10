@@ -20,6 +20,4 @@ public class AnimationActivity extends SingleFragmentActivity {
             startActivity(intent);
         }
     };
-
-
 }

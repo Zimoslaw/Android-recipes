@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 public class TimerFragment extends Fragment implements View.OnClickListener {
     private int seconds = 0;
     private boolean running;
-    private boolean wasRunning;
 
 
     @Override
@@ -22,7 +21,6 @@ public class TimerFragment extends Fragment implements View.OnClickListener {
         if (savedInstanceState != null) {
             seconds = savedInstanceState.getInt("seconds");
             running = savedInstanceState.getBoolean("running");
-            wasRunning = savedInstanceState.getBoolean("wasRunning");
         }
     }
 
@@ -38,27 +36,6 @@ public class TimerFragment extends Fragment implements View.OnClickListener {
         Button resetButton = (Button)layout.findViewById(R.id.reset_button);
         resetButton.setOnClickListener(this);
         return layout;
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        wasRunning = running;
-        running = false;
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (wasRunning) {
-            running = true;
-        }
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putInt("seconds", seconds);
-        savedInstanceState.putBoolean("running", running);
-        savedInstanceState.putBoolean("wasRunning", wasRunning);
     }
 
     @Override
@@ -101,5 +78,11 @@ public class TimerFragment extends Fragment implements View.OnClickListener {
                 handler.postDelayed(this, 1000);
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putInt("seconds", seconds);
+        savedInstanceState.putBoolean("running", running);
     }
 }

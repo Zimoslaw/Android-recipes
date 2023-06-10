@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.cardview.widget.CardView;
 
 class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImagesAdapter.ViewHolder> {
-
     private String[] captions;
     private int[] imageIds;
     private Listener listener;
@@ -39,13 +38,17 @@ class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImagesAdapter
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        final CardView cardView = holder.cardView;
+        final CardView cardView = holder.cardView; // Zaciągnięcie CardView z układu
+        // Zaciągnięcie do zmiennych elementu obrazu z układu oraz odpowiedniego zdjęcia przepisu
         ImageView imageView = (ImageView)cardView.findViewById(R.id.info_image);
         Drawable drawable = ContextCompat.getDrawable(cardView.getContext(), imageIds[position]);
+        // Wstawienie zdjęcia do elementu obrazu CardView
         imageView.setImageDrawable(drawable);
         imageView.setContentDescription(captions[position]);
+        // Wstawienie nazyw przepisu do elementu tekstu CardView
         TextView textView = (TextView)cardView.findViewById(R.id.info_text);
         textView.setText(captions[position]);
+        // Nastawienie nasłuchiwania kliknięcia w daną pozycję z listy
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

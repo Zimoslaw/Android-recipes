@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="16dp">
+    android:paddingTop="16dp" >
 
     <TextView
         android:id="@+id/time_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="56sp" />
 
@@ -21,8 +21,7 @@
         android:layout_toLeftOf="@+id/stop_button"
         android:layout_below="@id/time_view"
         android:layout_marginTop="8dp"
-        android:text="@string/start"
-        />
+        android:text="@string/start" />
     <Button
         android:id="@+id/stop_button"
         android:layout_width="130dp"
@@ -30,8 +29,7 @@
         android:layout_below="@id/time_view"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:text="@string/stop"
-        />
+        android:text="@string/stop" />
 
     <Button
         android:id="@+id/reset_button"
@@ -41,7 +39,6 @@
         android:layout_toRightOf="@+id/stop_button"
         android:layout_below="@id/time_view"
         android:layout_marginTop="8dp"
-        android:text="@string/reset"
-        />
+        android:text="@string/reset" />
 
 </RelativeLayout>

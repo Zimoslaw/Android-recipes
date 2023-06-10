@@ -17,8 +17,8 @@ public class AnimationFragment extends Fragment {
     private View mSceneView;
     private View mIconView;
     private View mSkyView;
-    private int mBlueSkyColor;
-    private int mSunsetSkyColor;
+    private int mStartColor;
+    private int mEndColor;
 
     public static AnimationFragment newInstance() {
             return new AnimationFragment();
@@ -31,22 +31,22 @@ public class AnimationFragment extends Fragment {
         mIconView = view.findViewById(R.id.icon);
         mSkyView = view.findViewById(R.id.sky);
         Resources resources = getResources();
-        mBlueSkyColor = resources.getColor(R.color.black);
-        mSunsetSkyColor = resources.getColor(R.color.white);
+        mStartColor = resources.getColor(R.color.black);
+        mEndColor = resources.getColor(R.color.white);
         startAnimation();
         return view;
     }
 
     private void startAnimation() {
         float iconYStart = mSceneView.getTop()-1500;
-        float iconYEnd = mSkyView.getBottom()/2+250;
+        float iconYEnd = mSkyView.getPivotY();
 
         ObjectAnimator heightAnimator = ObjectAnimator
                 .ofFloat(mIconView, "y", iconYStart, iconYEnd)
                 .setDuration(3000);
         heightAnimator.setInterpolator(new DecelerateInterpolator());
         ObjectAnimator sunsetSkyAnimator = ObjectAnimator
-                .ofInt(mSkyView, "backgroundColor", mBlueSkyColor, mSunsetSkyColor)
+                .ofInt(mSkyView, "backgroundColor", mStartColor, mEndColor)
                 .setDuration(3000);
         sunsetSkyAnimator.setEvaluator(new ArgbEvaluator());
         heightAnimator.start();

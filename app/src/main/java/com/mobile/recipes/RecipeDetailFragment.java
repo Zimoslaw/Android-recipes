@@ -45,7 +45,9 @@ public class RecipeDetailFragment extends Fragment {
         super.onStart();
         View view = getView();
         if (view != null) {
-            Recipe recipe = recipeCategory.equals("dinner") ? Recipe.recipesDinner[(int) recipeID] : recipeCategory.equals("dessert") ? Recipe.recipesDessert[(int) recipeID] : Recipe.recipesDinner[(int) recipeID];
+            Recipe recipe = recipeCategory.equals("dinner") ? Recipe.recipesDinner[(int) recipeID] :
+                    recipeCategory.equals("dessert") ? Recipe.recipesDessert[(int) recipeID] :
+                            Recipe.recipesDinner[(int) recipeID];
 
             TextView title = (TextView) view.findViewById(R.id.recipeTitle);
             title.setText(recipe.getName());

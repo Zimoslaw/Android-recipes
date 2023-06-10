@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 public class DetailActivity extends AppCompatActivity {
 
-    public static final String EXTRA_RECIPE_ID = "id";
+    public static final String EXTRA_RECIPE_ID = "0";
     public static final String EXTRA_RECIPE_CATEGORY = "dinner";
 
     private ShareActionProvider shareActionProvider;
@@ -31,24 +31,25 @@ public class DetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Stan i układ
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        // Fragment opisu przepisu
         RecipeDetailFragment fragment = (RecipeDetailFragment)
                 getSupportFragmentManager().findFragmentById(R.id.detail_fragment);
+        // Przekazywanie fragmentowi identufikatora przepisu i kategorii
         int recipeID = (int) getIntent().getExtras().get(EXTRA_RECIPE_ID);
         String recipeCategory = (String) getIntent().getExtras().get(EXTRA_RECIPE_CATEGORY);
         fragment.setRecipeID(recipeID, recipeCategory);
-        String recipeName = recipeCategory.equals("dinner") ? Recipe.recipesDinner[recipeID].getName() : recipeCategory.equals("dessert") ? Recipe.recipesDessert[recipeID].getName() : Recipe.recipesDinner[recipeID].getName();
-        //TextView textView = (TextView)findViewById(R.id.recipe_title);
-        //textView.setText(recipeName);
-        int recipeImage = recipeCategory.equals("dinner") ? Recipe.recipesDinner[recipeID].getImageId() : recipeCategory.equals("dessert") ? Recipe.recipesDessert[recipeID].getImageId() : Recipe.recipesDinner[recipeID].getImageId();
+        // Pobieranie zdjęcia i wstawianie go w element zwijanego obrazka w nagłówku układu
+        Recipe recipe = recipeCategory.equals("dinner") ? Recipe.recipesDinner[recipeID] :
+                recipeCategory.equals("dessert") ? Recipe.recipesDessert[recipeID] :
+                        Recipe.recipesDinner[recipeID];
         ImageView imageView = (ImageView)findViewById(R.id.recipe_image);
-        imageView.setImageDrawable(ContextCompat.getDrawable(this, recipeImage));
-
-        //Poberz przepis do dostawcy udostepniania
-        Recipe recipe = recipeCategory.equals("dinner") ? Recipe.recipesDinner[(int) recipeID] : recipeCategory.equals("dessert") ? Recipe.recipesDessert[(int) recipeID] : Recipe.recipesDinner[(int) recipeID];
+        imageView.setImageDrawable(ContextCompat.getDrawable(this, recipe.getImageId()));
+        //Pobierz przepis do dostawcy udostepniania
         shareContent = recipe.toString();
-
+        // Ustawienie paska narzędzi (tak samo jak w MainActivity)
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -70,12 +71,28 @@ public class DetailActivity extends AppCompatActivity {
         shareActionProvider.setShareIntent(intent);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.author_action) {
+            Intent intent = new Intent(this, AuthorActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
     public void onClickCopy(View view) {
         int recipeID = (int) getIntent().getExtras().get(EXTRA_RECIPE_ID);
         String recipeCategory = (String) getIntent().getExtras().get(EXTRA_RECIPE_CATEGORY);
 
-        String recipeName = recipeCategory.equals("dinner") ? Recipe.recipesDinner[recipeID].getName() : recipeCategory.equals("dessert") ? Recipe.recipesDessert[recipeID].getName() : Recipe.recipesDinner[recipeID].getName();
-        String recipeIngredients = recipeCategory.equals("dinner") ? Recipe.recipesDinner[recipeID].getIngredients() : recipeCategory.equals("dessert") ? Recipe.recipesDessert[recipeID].getIngredients() : Recipe.recipesDinner[recipeID].getIngredients();
+        String recipeName = recipeCategory.equals("dinner") ? Recipe.recipesDinner[recipeID].getName() :
+                recipeCategory.equals("dessert") ? Recipe.recipesDessert[recipeID].getName() :
+                        Recipe.recipesDinner[recipeID].getName();
+        String recipeIngredients = recipeCategory.equals("dinner") ? Recipe.recipesDinner[recipeID].getIngredients() :
+                recipeCategory.equals("dessert") ? Recipe.recipesDessert[recipeID].getIngredients() :
+                        Recipe.recipesDinner[recipeID].getIngredients();
 
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("Składniki na " + recipeName, recipeIngredients);
